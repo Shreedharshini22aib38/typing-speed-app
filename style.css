@@ -1,0 +1,73 @@
+:root{
+  --bg:#0b0f14; --card:#121820; --ink:#e6edf3; --muted:#9fb0c0;
+  --ok:#27c93f; --bad:#ff5555; --accent:#5aa9ff; --caret:#ffd166;
+  --key:#1a222c; --key2:#1e2834; --key-border:#2b394a;
+  --heat1:#203040; --heat2:#2a4964; --heat3:#3a6d93; --heat4:#5aa9ff; --heat5:#ffd166;
+  --focus:#88c0ff66; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --round:12px;
+}
+[data-theme="light"]{
+  --bg:#f7fafc; --card:#ffffff; --ink:#0b0f14; --muted:#4a5568;
+  --ok:#14823a; --bad:#d90429; --accent:#2563eb; --caret:#b45309;
+  --key:#edf2f7; --key2:#e2e8f0; --key-border:#cbd5e1;
+  --heat1:#e6f0ff; --heat2:#c8e1ff; --heat3:#9fc9ff; --heat4:#6eaaff; --heat5:#ffd166;
+  --focus:#2563eb33;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  background:var(--bg); color:var(--ink);
+}
+header{
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  padding:16px clamp(12px,4vw,28px); position:sticky; top:0; background:var(--bg);
+  border-bottom:1px solid #0003;
+}
+.brand{font-weight:700; letter-spacing:0.3px}
+.controls{display:flex; flex-wrap:wrap; gap:8px}
+.controls > *{background:var(--card); border:1px solid #0003; color:var(--ink); padding:8px 10px; border-radius:10px; font-size:14px}
+.toggle{display:inline-flex; align-items:center; gap:8px; padding:6px 10px}
+main{max-width:1000px; margin:16px auto; padding:0 16px 48px}
+.card{background:var(--card); border:1px solid #0003; border-radius:var(--round); padding:18px; box-shadow:0 2px 16px #00000010;}
+.row{display:flex; gap:16px; align-items:stretch; flex-wrap:wrap}
+.col{flex:1 1 420px; min-width:320px}
+
+/* Typing area */
+.typing-wrap{position:relative; overflow:hidden}
+.text{font-family:var(--mono); font-size:20px; line-height:1.65; letter-spacing:0.2px; min-height:160px; padding:12px 10px; border-radius:10px; outline:none; user-select:none;}
+.word{margin-right:8px}
+.char{opacity:0.7}
+.char.correct{opacity:1}
+.char.wrong{color:var(--bad); background:#ff55550f; border-bottom:2px solid var(--bad)}
+.char.extra{color:var(--bad); opacity:1; border-bottom:2px dashed var(--bad)}
+.char.future{opacity:0.35}
+.caret{position:absolute; width:2px; background:var(--caret); animation:blink 1s step-end infinite; transform:translateY(3px); height:1.3em;}
+@keyframes blink{50%{opacity:0}}
+.bar{height:8px; background:#0002; border-radius:999px; overflow:hidden}
+.bar > span{display:block; height:100%; background:var(--accent); width:0%}
+
+.stats{display:grid; grid-template-columns: repeat(5, minmax(100px,1fr)); gap:10px; margin-top:14px}
+.stat{background:var(--key2); border:1px solid #0003; border-radius:10px; padding:10px 12px; display:flex; flex-direction:column; gap:4px;}
+.stat .label{font-size:12px; color:var(--muted)}
+.stat .value{font-size:22px; font-weight:700; font-variant-numeric:tabular-nums}
+.actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+button{border:1px solid #0003; background:var(--accent); color:white; padding:10px 14px; border-radius:10px; font-weight:600; cursor:pointer}
+button.secondary{background:var(--key2); color:var(--ink)}
+button.ghost{background:transparent}
+button:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+
+/* Keyboard heatmap */
+.kbd{display:grid; gap:6px; grid-template-columns: repeat(30, 1fr); margin-top:10px}
+.key{background:var(--key); border:1px solid var(--key-border); border-radius:8px; padding:10px 0; text-align:center; font-family:var(--mono); font-size:12px; user-select:none;}
+.key[data-hit="1"]{background:var(--heat1)}
+.key[data-hit="2"]{background:var(--heat2)}
+.key[data-hit="3"]{background:var(--heat3)}
+.key[data-hit="4"]{background:var(--heat4)}
+.key[data-hit="5"]{background:var(--heat5)}
+.key.worst{box-shadow:0 0 0 2px var(--bad) inset}
+
+.table{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums}
+.table th,.table td{padding:8px 10px; border-bottom:1px dashed #0003; text-align:left}
+.muted{color:var(--muted)}
+textarea.custom{width:100%; min-height:100px; font-family:var(--mono); font-size:14px; padding:10px; display:none}
+.note{font-size:12px; color:var(--muted); margin-top:6px}
+.pill{display:inline-block; padding:.25rem .5rem; border:1px solid #0003; border-radius:999px; font-size:12px}
