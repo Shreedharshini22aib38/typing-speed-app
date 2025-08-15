@@ -20,3 +20,9 @@ A simple web application that measures typing speed (WPM) and accuracy. Users ca
 
 ## Author
 Shree Dharshini
+## Output
+<img width="913" height="867" alt="image" src="https://github.com/user-attachments/assets/b0bec204-b78f-48f1-b9af-01118446c0f2" />
+<img width="898" height="744" alt="image" src="https://github.com/user-attachments/assets/645ce317-a12c-4c3f-b4a9-90adb4bcad02" />
+<img width="942" height="609" alt="image" src="https://github.com/user-attachments/assets/f3c18568-9c6d-4e4e-970c-300d2cb51b5f" />
+
+
